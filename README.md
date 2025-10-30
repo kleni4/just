@@ -9,16 +9,16 @@
 
 ## Установка на сервере
 1) Пернести файлы
-- `sudo cp ./test_monit.sh /usr/local/bin/test_monit.shsudo`
-- `chmod 0755 /usr/local/bin/test_monit.shsudoм 
-- `cp ./monitoring.service /etc/systemd/system/monitoring.servicesudo`
-- `cp ./monitoring.timer /etc/systemd/system/monitoring.timer`
+- `sudo cp ./test_monit.sh /usr/local/bin/test_monit.sh`
+- `sudo chmod 0755 /usr/local/bin/test_monit.sh` 
+- `sudo cp ./monitoring.service /etc/systemd/system/monitoring.services`
+- `sudo cp ./monitoring.timer /etc/systemd/system/monitoring.timer`
 
 3) Перечитать systemd и запустить таймер
 - `sudo systemctl status monitoring.timer`
 - `sudo systemctl daemon-reload`
-- `sudo systemctl enable --now monitoring.timersudo`
-- `systemctl status monitoring.timer`
+- `sudo systemctl enable --now monitoring.timer`
+- `sudo systemctl status monitoring.timer`
 
 5) Проверка вручную
 - `sudo systemctl start monitoring.servicesudo`
