@@ -8,19 +8,22 @@
 `systemd/monitoring.timer` — таймер, запускает unit каждую минуту.
 
 ## Установка на сервере
-1) Установить скрипт:
-sudo install -m 0755 test_monit.sh /usr/local/bin/test_monit.sh
+1) Пернести файлы
+sudo cp ./test_monit.sh /usr/local/bin/test_monit.shsudo
+chmod 0755 /usr/local/bin/test_monit.shsudo 
+cp ./monitoring.service /etc/systemd/system/monitoring.servicesudo 
+cp ./monitoring.timer /etc/systemd/system/monitoring.timer
 
-2) Установить unit-файлы:
-sudo install -m 0644 systemd/monitoring.service /etc/systemd/system/monitoring.service
-sudo install -m 0644 systemd/monitoring.timer /etc/systemd/system/monitoring.timer
-
-3) Включить и запустить таймер:
-sudo systemctl daemon-reload
-sudo systemctl enable --now monitoring.timer
+3) Перечитать systemd и запустить таймер
 sudo systemctl status monitoring.timer
+sudo systemctl daemon-reload
+sudo systemctl enable --now monitoring.timersudo
+systemctl status monitoring.timer
 
-
+5) Проверка вручную
+sudo systemctl start monitoring.servicesudo
+systemctl status monitoring.servicesudo
+tail -f /var/log/monitoring.log
 Требования: установлен `curl`. 
 
 ## Проверка
